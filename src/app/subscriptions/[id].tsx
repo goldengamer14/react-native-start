@@ -6,8 +6,8 @@ const SubscriptionDetails = () => {
   return (
     <View className="flex-1 items-center justify-center bg-background">
       <Text>Subscription Details for: {id}</Text>
-      <Link href="/" className="mt-5 rounded bg-primary text-white p-4">
-        Go Back
+      <Link href="/(tabs)/subscriptions" className="mt-5 rounded bg-primary text-white p-4">
+        Go Back to Subscriptions
       </Link>
     </View>
   );
