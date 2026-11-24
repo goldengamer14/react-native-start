@@ -1,56 +1,90 @@
-# Welcome to your Expo app 👋
+# Subscription Tracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+An Expo and React Native application prototype for helping users track
+subscriptions, their statuses and renewal dates, overall costs, and current
+plans.
 
-## Get started
+The current app is a UI prototype backed by typed, hardcoded sample data. It is
+not yet connected to an account, backend, payment provider, or persistent
+storage.
 
-1. Install dependencies
+## What is implemented
 
-   ```bash
-   npm install
-   ```
+- A Home dashboard with a sample balance and renewal date.
+- A horizontal upcoming-subscriptions carousel.
+- A vertically scrolling Home page implemented as a `FlatList`, with dashboard
+  content in its header and subscription cards as list rows.
+- Expandable subscription cards with plan, payment, status, and date details.
+- A custom tab bar for Home, Subscriptions, Insights, and Settings.
+- Root launch redirects to the Home tab.
+- Expo splash-screen handling that keeps the splash visible until custom fonts
+  are loaded, then falls back to system fonts if loading fails.
+- Shared currency, date, and status formatting helpers.
 
-2. Start the app
+The Subscriptions tab, authentication screens, Insights, Settings, onboarding,
+and subscription detail route are currently placeholders or examples. See
+[Current limitations](#current-limitations) and the [project documentation](./docs/README.md)
+for details.
 
-   ```bash
-   npx expo start
-   ```
+## Tech stack
 
-In the output, you'll find options to open the app in a
+- Expo SDK 58 and Expo Router
+- React 19 and React Native 0.88
+- TypeScript
+- NativeWind 5 and Tailwind CSS 4
+- Day.js for date formatting
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Getting started
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Install dependencies and start the Expo development server:
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```sh
+npm install
+npm run start
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+Use the Expo CLI commands to open a target:
 
-### Other setup steps
+```sh
+npm run android
+npm run ios
+npm run web
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Additional package scripts include `npm run start-clear` to clear the Expo
+cache and `npm run lint` to invoke Expo lint. Lint setup is not currently
+committed; see [Development notes](./docs/development.md#validation-notes)
+before running it. There is no test runner configured in this repository.
 
-## Learn more
+## Project structure
 
-To learn more about developing your project with Expo, look at the following resources:
+```text
+src/app/            Expo Router layouts, tabs, auth, and detail routes
+components/         Shared subscription cards and list heading
+constants/          Typed sample data, icons, images, and theme values
+lib/                Formatting helpers
+assets/             Fonts, icons, and application images
+docs/               Product, architecture, screen, data, and development docs
+example/            Separate Expo starter example; not part of the app docs
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Current limitations
 
-## Join the community
+- Subscription data and the displayed balance are sample constants; the balance
+  is not calculated from the subscription list.
+- Changes are not persisted between launches.
+- Authentication, live subscription synchronization, and payment management
+  are not implemented.
+- Insights and Settings are placeholder screens.
+- The subscription detail route currently displays its route ID rather than
+  loading a subscription record.
 
-Join our community of developers creating universal apps.
+## Documentation
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Start with the [documentation index](./docs/README.md), then see:
+
+- [Product overview](./docs/product-overview.md)
+- [Architecture](./docs/architecture.md)
+- [Screens and features](./docs/screens-and-features.md)
+- [Data and design](./docs/data-and-design.md)
+- [Development and configuration](./docs/development.md)
